@@ -78,21 +78,21 @@ d3.csv("./assets/data/data.csv").then(function (healthdata) {
         .attr("class", "tooltip")
         .offset([80, -60])
         .html(function (d) {
-            return (`${d.state}<br>Poverty: ${d.poverty}<br>healthcare: ${d.healthcare}`);
+            return (`${d.state}<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}`);
 
         })
         .style("background-color", "#00DDFF");
 
     // Step 7: Create tooltip in the chart
     // ==============================
-    chartGroup.call(toolTip);
+    circlesGroup.call(toolTip);
 
     // Step 8: Create event listeners to display and hide the tooltip
     // ==============================
     circlesGroup.on("click", function (data) {
-        toolTip.show(data);
+        toolTip.show(data, this);
     })
-        // onmouseout event
+        // on mouseout event
         .on("mouseout", function (data, index) {
             toolTip.hide(data);
         });
